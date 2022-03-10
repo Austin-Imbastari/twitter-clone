@@ -21,6 +21,7 @@ const AppContainer = styled.div`
     max-width: 1300px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0;
 `;
 
 export default Twitter;

@@ -21,7 +21,7 @@ function Sidebar() {
     return (
         <SidebarContainer>
             <TwitterIcon className='twitter-icon' />
-            <SidebarOption active active Icon={CottageSharpIcon} text='Home' />
+            <SidebarOption active Icon={CottageSharpIcon} text='Home' />
             <SidebarOption Icon={AutoFixHighSharpIcon} text='Explore' />
             <SidebarOption
                 Icon={LocalFireDepartmentSharpIcon}
@@ -32,7 +32,7 @@ function Sidebar() {
             <SidebarOption Icon={PlaylistAddCircleSharpIcon} text='Lists' />
             <SidebarOption Icon={PersonIcon} text='Profile' />
             <SidebarOption Icon={MoreHorizSharpIcon} text='More' />
-            <Button className='sidebar' fullWidth={true} variant='outlined'>
+            <Button className='sidebar-btn' fullWidth={true} variant='outlined'>
                 Tweet
             </Button>
         </SidebarContainer>
@@ -41,16 +41,19 @@ function Sidebar() {
 
 const SidebarContainer = styled.div`
     /* border: 1px solid red; */
+    flex: 0.3;
     border-right: 1px solid #e6ecf0;
-    padding: 0px 20px 0px 20px;
-    margin-top: 20px;
+
+    /* padding: 0px 20px 0px 20px; */
+    /* margin-top: 20px; */
 
     .twitter-icon {
         color: #ff5d73;
         font-size: 30px;
     }
-    .sidebar {
+    .sidebar-btn {
         background: #000;
+        width: 200px;
         border: none !important;
         color: #ffffff;
         border-radius: 30px;
@@ -59,7 +62,7 @@ const SidebarContainer = styled.div`
         height: 50px;
         text-transform: inherit;
     }
-    .sidebar:hover {
+    .sidebar-btn:hover {
         background: #ff5d73;
         border-radius: 30px;
         color: #fff;
