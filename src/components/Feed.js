@@ -22,7 +22,7 @@ const FeedContainer = styled.div`
     /* border: 5px solid black; */
     flex: 0.4;
     height: 100vh;
-    border-right: 1px solid #e6ecf0;
+    border-right: 1px solid #7c7a7a;
     min-width: fit-content;
     overflow-y: scroll;
     &::-webkit-scrollbar {
@@ -32,12 +32,12 @@ const FeedContainer = styled.div`
 
 const FeedHeader = styled.div`
     /* border: 5px solid black; */
-    border-bottom: 1px solid #e6ecf0;
+    border-bottom: 1px solid #7c7a7a;
     position: sticky;
     top: 0;
     background-color: #fff;
     z-index: 6969;
-    border: 1px solid #e6ecf0;
+    border-bottom: 1px solid #7c7a7a;
     padding: 15px 20px;
 
     h2 {

@@ -48,7 +48,7 @@ function Post({ displayName, userName, verified, text, avatar }) {
 
 const PostContainer = styled.div`
     /* border: 1px solid red; */
-    border-bottom: 1px solid #e6ecf0;
+    border-bottom: 1px solid #7c7a7a;
     display: flex;
     align-items: flex-start;
     padding-bottom: 10px;

@@ -42,7 +42,7 @@ function Sidebar() {
 const SidebarContainer = styled.div`
     /* border: 1px solid red; */
     flex: 0.3;
-    border-right: 1px solid #e6ecf0;
+    border-right: 1px solid #7c7a7a;
 
     /* padding: 0px 20px 0px 20px; */
     /* margin-top: 20px; */

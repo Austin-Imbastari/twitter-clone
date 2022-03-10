@@ -45,7 +45,7 @@ function Tweetbox() {
 
 const TweetBox = styled.div`
     /* border: 1px solid #e64; */
-    border-bottom: 1px solid #e6ecf0;
+    border-bottom: 1px solid #7c7a7a;
     padding-bottom: 20px;
     form {
         display: flex;
@@ -54,7 +54,7 @@ const TweetBox = styled.div`
 
     .input-image {
         /* border: 1px solid #e64; */
-        border: 1px solid #e6ecf0;
+        border: 0.5px solid #7c7a7a;
 
         padding: 20px;
         width: 100%;

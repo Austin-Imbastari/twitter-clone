@@ -4,12 +4,14 @@ import styled from "styled-components";
 // Component
 import Feed from "../components/Feed";
 import Sidebar from "../components/Sidebar";
+import Widgets from "../components/Widgets";
 
 function Twitter() {
     return (
         <AppContainer>
             <Sidebar />
             <Feed />
+            <Widgets />
         </AppContainer>
     );
 }
