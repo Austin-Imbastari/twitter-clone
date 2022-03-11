@@ -9,32 +9,38 @@ import LoopIcon from "@mui/icons-material/Loop";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PublishIcon from "@mui/icons-material/Publish";
 
-function Post({ displayName, userName, verified, text, avatar }) {
+function Post({ displayName, username, verified, text, avatar, image }) {
     return (
         <PostContainer>
             <AvatarContainer>
-                <Avatar src='https://images.unsplash.com/photo-1645894096014-51dddfdd027a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80' />
+                <Avatar src={avatar} />
             </AvatarContainer>
             <BodyContainer>
                 <HeaderContainer>
                     <PostHeaderText>
                         <h3>
-                            Imba
-                            <VerifiedIcon
-                                className='verified-badge'
-                                fontSize='small'
-                            />
-                            <span>@fvckimba</span>
+                            {displayName}
+                            {verified ? (
+                                <VerifiedIcon
+                                    className='verified-badge'
+                                    fontSize='small'
+                                />
+                            ) : (
+                                " "
+                            )}
+                            <span>@{username}</span>
                         </h3>
                     </PostHeaderText>
                     <HeaderDescription>
-                        <p>fuck you</p>
+                        <p>{text.tweetMessage}</p>
                     </HeaderDescription>
                 </HeaderContainer>
-                <img
-                    src='https://64.media.tumblr.com/3cb3291506344ea504d3c1b343a22c13/f5e0cb19725eebcd-56/s540x810/6f1fb7e276403f12961724fe8f5367dd3beda037.jpg'
-                    alt=''
-                />
+                {image.tweetImage ? (
+                    <img src={image.tweetImage} alt='img' />
+                ) : (
+                    ""
+                )}
+
                 <PostFooter>
                     <ChatBubbleOutlineIcon />
                     <LoopIcon />

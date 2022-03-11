@@ -17,9 +17,8 @@ function Widgets() {
             </WidgetInput>
             <Widget>
                 <h2>Whats Happening</h2>
-                <TwitterTweetEmbed tweetId='1491734379659665408' />
+                <TwitterTweetEmbed tweetId='1445409346305892353' />
                 <TwitterTimelineEmbed
-                    onLoad={function noRefCheck() {}}
                     options={{
                         height: 400,
                     }}

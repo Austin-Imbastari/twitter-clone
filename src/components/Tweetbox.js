@@ -4,29 +4,60 @@ import styled from "styled-components";
 // Mui Component
 import { Avatar, Button } from "@material-ui/core";
 
+// firebase database
+import db from "../firebase";
+import { collection, addDoc } from "@firebase/firestore";
+
 function Tweetbox() {
-    const [tweet, setTweet] = useState("");
+    const [tweetMessage, setTweetMessage] = useState("");
     const [tweetImage, setTweetImage] = useState("");
 
-    const tweetSubmit = (e) => {
+    const tweetTextSubmit = (e) => {
         const target = e.target.value;
-        setTweet(target);
+        setTweetMessage(target);
+    };
+
+    const tweetImageSubmit = (e) => {
+        const target = e.target.value;
+        setTweetImage(target);
+    };
+
+    const tweetSendSubmit = (e) => {
+        e.preventDefault();
+        const colRef = collection(db, "posts");
+        async function sendTweet() {
+            const data = await addDoc(colRef, {
+                displayName: "legend",
+                username: "gudimba",
+                verified: true,
+                text: { tweetMessage },
+                image: { tweetImage },
+                avatar: "https://images.unsplash.com/photo-1645894096014-51dddfdd027a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
+            });
+            console.log(data);
+            return data;
+        }
+        sendTweet();
+        setTweetImage("");
+        setTweetMessage("");
     };
 
     return (
         <TweetBox>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form>
                 <TweetInput>
                     <Avatar src='https://images.unsplash.com/photo-1645894096014-51dddfdd027a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80' />
                     <input
-                        onChange={tweetSubmit}
-                        value={tweet || ""}
+                        onChange={tweetTextSubmit}
+                        value={tweetMessage || ""}
                         type='text'
                         placeholder='What is poppin?'
                     />
                 </TweetInput>
                 <input
                     className='input-image'
+                    onChange={tweetImageSubmit}
+                    value={tweetImage || ""}
                     type='text'
                     placeholder='Optional: Enter image URL'
                 />
@@ -34,7 +65,7 @@ function Tweetbox() {
                     className='sidebar-btn'
                     fullWidth={true}
                     variant='outlined'
-                    onClick={tweetSubmit}
+                    onClick={tweetSendSubmit}
                 >
                     Tweet
                 </Button>

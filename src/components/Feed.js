@@ -1,19 +1,52 @@
-import React from "react";
-//Styles
+import React, { useEffect, useState } from "react";
+// styles
 import styled from "styled-components";
 // components
 import Tweetbox from "./Tweetbox";
 import Post from "./Post";
+// uuid
+import { v4 as uuidv4 } from "uuid";
+// firebase
+import db from "../firebase";
+import { collection, getDocs } from "@firebase/firestore";
 
 function Feed() {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        const colRef = collection(db, "posts");
+        getDocs(colRef).then((snapshot) => {
+            setPosts(snapshot.docs.map((doc) => doc.data()));
+        });
+        // async function fetchData() {
+        //     const data = await getDocs(colRef);
+        //     const request = data.docs.forEach((doc) => {
+        //         setPosts([doc.data()]);
+        //     });
+        //     return request;
+        // }
+        // fetchData();
+    }, []);
+
+    console.log(posts);
     return (
         <FeedContainer>
             <FeedHeader>
                 <h2>Home</h2>
             </FeedHeader>
             <Tweetbox />
-            <Post />
-            <Post />
+            {posts.map((post) => (
+                <div key={uuidv4()}>
+                    <Post
+                        displayName={post.displayName}
+                        username={post.username}
+                        verified={post.verified}
+                        text={post.text}
+                        avatar={post.avatar}
+                        image={post.image}
+                    />
+                </div>
+            ))}
         </FeedContainer>
     );
 }
@@ -21,7 +54,7 @@ function Feed() {
 const FeedContainer = styled.div`
     /* border: 5px solid black; */
     flex: 0.4;
-    height: 100vh;
+
     border-right: 1px solid #7c7a7a;
     min-width: fit-content;
     overflow-y: scroll;
